@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
-import WebView from 'components/WebView'
+import WebView from './WebView'
 
 const App = () => (
   <div style={{ display: 'flex', 'align-items': 'flex-start', transform: 'scale(0.5)', 'transformOrigin': 'top left' }}>
