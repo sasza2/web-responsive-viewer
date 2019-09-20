@@ -1,9 +1,9 @@
-const electron = require('electron')
+import path from 'path'
+import isDev from 'electron-is-dev'
+import electron from 'electron'
+
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
-
-const path = require('path')
-const isDev = require('electron-is-dev')
 
 let mainWindow;
 
