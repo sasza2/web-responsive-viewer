@@ -35,5 +35,8 @@
       "last 1 safari version"
     ]
   },
-  "main": "public/main.js"
+  "main": "public/main.js",
+  "devDependencies": {
+    "eslint": "^6.4.0"
+  }
 }

@@ -1,7 +1,3 @@
-/*
-  sudo sysctl kernel.unprivileged_userns_clone=1
-*/
-
 const electron = require('electron')
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
