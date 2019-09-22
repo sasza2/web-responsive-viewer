@@ -6,18 +6,21 @@ import WebView from '../WebView'
 
 import './Devices.sass'
 
-const Devices = () => (
-  <div className='devices'>
-    <PanZoom>    
-      <Masonry>
-        <WebView width={320} height={480} />
-        <WebView width={360} height={740} />
-        <WebView width={375} height={667} />
-        <WebView width={480} height={853} />
-        <WebView width={768} height={1024} />
-      </Masonry>
-    </PanZoom>
-  </div>
-)
+const Devices = () => {
+  const onZoomChange = console.log
+  return (
+    <div className='devices'>
+      <PanZoom onStateChange={onZoomChange}>
+        <Masonry>
+          <WebView width={320} height={480} />
+          <WebView width={360} height={740} />
+          <WebView width={375} height={667} />
+          <WebView width={480} height={853} />
+          <WebView width={768} height={1024} />
+        </Masonry>
+      </PanZoom>
+    </div>
+  )
+}
 
 export default Devices

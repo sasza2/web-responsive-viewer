@@ -1,9 +1,9 @@
 import { createStore } from 'redux'
-import reducer from '../reducers'
 
+import createReducer from '../reducers'
 
 const configureStore = () => {
-  const store = createStore(reducer)
+  const store = createStore(createReducer())
   return store
 }
 
