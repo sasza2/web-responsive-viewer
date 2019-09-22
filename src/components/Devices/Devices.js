@@ -1,22 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PanZoom from 'react-easy-panzoom'
 import Masonry from 'react-masonry-component'
 
-import WebView from '../WebView'
+import useViewport from 'hooks/useViewport'
+import Device, { TYPE } from './Device/Device';
 
 import './Devices.sass'
 
 const Devices = () => {
-  const onZoomChange = console.log
+  const { width: viewportWidth } = useViewport()
+  const [width, setWidth] = useState(viewportWidth)
+
+  useEffect(() => {
+    setWidth(viewportWidth)
+  }, [viewportWidth])
+  
+  const onZoomChange = (panZoomState) => setWidth(viewportWidth / panZoomState.scale)
+
   return (
     <div className='devices'>
       <PanZoom onStateChange={onZoomChange}>
-        <Masonry>
-          <WebView width={320} height={480} />
-          <WebView width={360} height={740} />
-          <WebView width={375} height={667} />
-          <WebView width={480} height={853} />
-          <WebView width={768} height={1024} />
+        <Masonry style={{ width }}>
+          <Device device={TYPE.IPHONE_3GS} src='https://github.com' />
+          <Device device={TYPE.IPHONE_4} src='https://github.com' />
+          <Device device={TYPE.IPHONE_3GS} src='https://github.com' />
+          <Device device={TYPE.IPHONE_3GS} src='https://github.com' />
+          <Device device={TYPE.IPHONE_3GS} src='https://github.com' />
+          <Device device={TYPE.IPHONE_3GS} src='https://github.com' />
         </Masonry>
       </PanZoom>
     </div>
