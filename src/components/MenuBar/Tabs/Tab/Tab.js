@@ -1,8 +1,12 @@
 import React from 'react'
 
-const Tab = () => (
-  <div className='tab'>
+import './Tab.sass'
 
+const Tab = ({ active }) => (
+  <div className={`tab ${active ? 'active' : ''}`}>
+    <div className='tab__in'>
+      elo siemanderko xd
+    </div>
   </div>
 )
 
