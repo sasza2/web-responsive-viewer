@@ -14,9 +14,11 @@ function createWindow() {
     webPreferences: {
       webSecurity: false, 
       webviewTag: true
-    }
+    },
+    toolbar: false,
   })
   mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`)
+  mainWindow.setMenuBarVisibility(false)
   //mainWindow.webContents.openDevTools()
   mainWindow.on('closed', () => mainWindow = null)
 }
