@@ -1,6 +1,8 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 
 import WebView from 'components/WebView'
+
+import './Device.sass'
 
 export const TYPE = {
   IPHONE_3GS: {
@@ -12,6 +14,11 @@ export const TYPE = {
     name: 'iphone-4',
     width: 480,
     height: 960,
+  },
+  IPHONE_5: {
+    name: 'iphone-5',
+    width: 720,
+    height: 1280,
   }
 }
 

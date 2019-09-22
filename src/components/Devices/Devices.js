@@ -24,7 +24,9 @@ const Devices = () => {
           <Device device={TYPE.IPHONE_3GS} src='https://github.com' />
           <Device device={TYPE.IPHONE_4} src='https://github.com' />
           <Device device={TYPE.IPHONE_3GS} src='https://github.com' />
+          <Device device={TYPE.IPHONE_4} src='https://github.com' />
           <Device device={TYPE.IPHONE_3GS} src='https://github.com' />
+          <Device device={TYPE.IPHONE_5} src='https://github.com' />
           <Device device={TYPE.IPHONE_3GS} src='https://github.com' />
           <Device device={TYPE.IPHONE_3GS} src='https://github.com' />
         </Masonry>
