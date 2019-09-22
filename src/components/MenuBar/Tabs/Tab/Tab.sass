@@ -3,9 +3,18 @@
     max-width: 225px
     height: 33px
     color: #cfd3d3
-    font-size: 14px
+    font-size: 13px
     &__in
-        padding: 10px 0px 0px 5px
+        display: flex
+        align-items: center
+        height: 100%
+    &__name
+        margin: 0px 15px 0px 10px
+        overflow: hidden
+        text-overflow: ellipsis
+        white-space: nowrap
+    .close
+        width: 20px
     &.active
         border-top: 1px solid #181f23
         background-color: #465055
