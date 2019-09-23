@@ -8,8 +8,8 @@ import './App.sass'
 
 const App = () => (
   <Router>
-    <Route path='/' component={WelcomeScreen} />
-    <Route path='/overview' component={Overview} />
+    <Route exact path='/' component={WelcomeScreen} />
+    <Route exact path='/overview' component={Overview} />
   </Router>
 )
 

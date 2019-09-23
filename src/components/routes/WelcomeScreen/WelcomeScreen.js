@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -14,7 +15,9 @@ const FirstRunHomeScreen = () => (
           <StyledInputLabel htmlFor="my-input">Website adress</StyledInputLabel>
           <StyledInput id="my-input" aria-describedby="my-helper-text" />
         </FormControl>
-        <StyledButton>Start testing</StyledButton>
+        <Link to='/overview'>
+          <StyledButton>Start testing</StyledButton>
+        </Link>
       </Form>
     </Header>
   </Welcome>
