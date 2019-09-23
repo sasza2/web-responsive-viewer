@@ -1,14 +1,10 @@
 import { connect } from 'react-redux'
 
-import { updateTabs } from 'reducers/tabsReducer'
+import { updateActiveTab } from 'reducers/tabsReducer'
 import Search from './Search'
 
-const mapStateToProps = state => ({
-  tabs: state.tabs,
-})
-
 const mapDispatchToProps = {
-  updateTabs,
+  updateActiveTab,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search)
+export default connect(null, mapDispatchToProps)(Search)

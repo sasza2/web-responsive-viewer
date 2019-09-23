@@ -2,12 +2,9 @@ import React from 'react'
 
 import './Search.sass'
 
-const Search = ({ tabs, updateTabs }) => {
-  console.log(tabs)
-  console.log(updateTabs)
-
+const Search = ({ updateActiveTab }) => {
   const keyUp = (e) => {
-    if (e.keyCode === 13) updateTabs({ elo: 'xd' })
+    if (e.keyCode === 13) updateActiveTab({ url: e.target.value })
   }
 
   return (
