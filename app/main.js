@@ -9,8 +9,7 @@ let mainWindow
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 900,
-    height: 680,
+    show: false,
     webPreferences: {
       webSecurity: false, 
       webviewTag: true
@@ -19,8 +18,10 @@ function createWindow() {
   })
   mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`)
   mainWindow.setMenuBarVisibility(false)
-  mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools()
   mainWindow.on('closed', () => mainWindow = null)
+  mainWindow.maximize()
+  mainWindow.show()
 }
 
 app.on('ready', createWindow)
