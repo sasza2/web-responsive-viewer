@@ -1,15 +1,16 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
-import MenuBar from './MenuBar'
-import Devices from './Devices'
+import WelcomeScreen from './routes/WelcomeScreen'
+import Overview from './routes/Overview'
 
 import './App.sass'
 
 const App = () => (
-  <Fragment>
-    <MenuBar />
-    <Devices />    
-  </Fragment>
+  <Router>
+    <Route path='/' component={WelcomeScreen} />
+    <Route path='/overview' component={Overview} />
+  </Router>
 )
 
 export default App
