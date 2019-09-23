@@ -1,5 +1,9 @@
 import { combineReducers } from 'redux'
 
-const createReducer = () => combineReducers({})
+import { tabsReducer } from './tabsReducer'
+
+const createReducer = () => combineReducers({
+  tabs: tabsReducer,
+})
 
 export default createReducer
