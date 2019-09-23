@@ -8,12 +8,12 @@ import Overview from './routes/Overview'
 import './App.sass'
 
 const App = () => (
-    <StylesProvider injectFirst>
-        <Router>
-            <Route path='/' component={WelcomeScreen} />
-            <Route path='/overview' component={Overview} />
-        </Router>
-    </StylesProvider>
+  <StylesProvider injectFirst>
+    <Router>
+      <Route exact path='/' component={WelcomeScreen} />
+      <Route exact path='/overview' component={Overview} />
+    </Router>
+  </StylesProvider>
 )
 
 export default App
