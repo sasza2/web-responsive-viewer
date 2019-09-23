@@ -1,4 +1,7 @@
-import deepClone from 'helpers/deepClone'
+import assign from 'lodash/assign'
+import cloneDeep from 'lodash/cloneDeep'
+
+import { DEVICE_TYPES } from 'consts'
 
 export const TAB_ADD = 'TAB_ADD'
 export const TAB_UPDATE_ACTIVE = 'TAB_UPDATE_ACTIVE'
@@ -20,6 +23,14 @@ const initialState = {
     {
       id: TAB_LAST_ID,
       name: 'New cart', // TODO: add translation
+      devices: [
+        {
+          type: DEVICE_TYPES.IPHONE_3GS,
+        },
+        {
+          type: DEVICE_TYPES.IPHONE_4,
+        }
+      ]
     }
   ],
   selected: TAB_LAST_ID,
@@ -32,11 +43,9 @@ export const tabsReducer = (state = initialState, action) => {
     case TAB_ADD:
       return action.payload
     case TAB_UPDATE_ACTIVE: {
-      const nextTabs = deepClone(state)
+      const nextTabs = cloneDeep(state)
       const tab = findActiveTab(nextTabs)
-      Object.keys(action.payload).forEach(key => {
-        tab[key] = action.payload[tab[key]]
-      })
+      assign(tab, action.payload)
       return nextTabs
     }
     default:

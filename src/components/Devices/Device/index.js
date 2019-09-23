@@ -1,1 +1,1 @@
-export { default, TYPE } from './Device'
+export { default } from './Device'

@@ -3,7 +3,7 @@ import PanZoom from 'react-easy-panzoom'
 import Masonry from 'react-masonry-component'
 
 import useViewport from 'hooks/useViewport'
-import Device, { TYPE } from './Device/Device';
+import Device from './Device/Device';
 
 import './Devices.sass'
 
@@ -21,14 +21,7 @@ const Devices = () => {
     <div className='devices'>
       <PanZoom onStateChange={onZoomChange}>
         <Masonry style={{ width }}>
-          <Device device={TYPE.IPHONE_3GS} src='https://github.com' />
-          <Device device={TYPE.IPHONE_4} src='https://github.com' />
-          <Device device={TYPE.IPHONE_3GS} src='https://github.com' />
-          <Device device={TYPE.IPHONE_4} src='https://github.com' />
-          <Device device={TYPE.IPHONE_3GS} src='https://github.com' />
-          <Device device={TYPE.IPHONE_5} src='https://github.com' />
-          <Device device={TYPE.IPHONE_3GS} src='https://github.com' />
-          <Device device={TYPE.IPHONE_3GS} src='https://github.com' />
+          {/*<Device device={TYPE.IPHONE_3GS} src='https://github.com' />*/}
         </Masonry>
       </PanZoom>
     </div>
