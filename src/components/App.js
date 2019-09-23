@@ -8,11 +8,11 @@ import Overview from './routes/Overview'
 import './App.sass'
 
 const App = () => (
-    <StylesProvider injectFirst>
-      <Router>
-        <Route exact path='/' component={WelcomeScreen} />
-        <Route exact path='/overview' component={Overview} />
-      </Router>
+    <StylesProvider>
+        <Router>
+            <Route path='/' component={WelcomeScreen} />
+            <Route path='/overview' component={Overview} />
+        </Router>
     </StylesProvider>
 )
 
