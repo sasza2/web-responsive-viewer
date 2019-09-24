@@ -42,13 +42,13 @@ const initialState = {
   selected: TAB_LAST_ID,
 }
 
-const findActiveTab = (tabs) => tabs.list.find(tab => tab.id === tabs.selected)
+export const findActiveTab = (tabs) => tabs.list.find(tab => tab.id === tabs.selected)
 
 const findTabById = (tabs, tabId) => tabs.list.find(tab => tab.id === tabId)
 
-const findDevice = (tabs, { tabId, deviceType }) => {
+const findDevice = (tabs, { tabId, deviceName }) => {
   const tab = findTabById(tabs, tabId)
-  const device = tab.devices.find(device => device.type === deviceType)
+  const device = tab.devices.find(device => device.type.name === deviceName)
   return device
 }
 
@@ -64,7 +64,7 @@ export const tabsReducer = (state = initialState, action) => {
     }
     case DEVICE_UPDATE: {
       const nextTabs = cloneDeep(state)
-      const device = findDevice(nextTabs, { tabId: action.payload.tabId, deviceType: action.payload.deviceType })
+      const device = findDevice(nextTabs, { tabId: action.payload.tabId, deviceName: action.payload.deviceName })
       assign(device, action.payload.device)
       return nextTabs
     }

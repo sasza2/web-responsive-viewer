@@ -7,7 +7,7 @@ import './Device.sass'
 const Device = ({ device, tab, updateDevice, src }) => {
   const onLoad = () => {
     updateDevice({
-      deviceType: device.type,
+      deviceName: device.name,
       tabId: tab.id,
       device: {
         loaded: true,
