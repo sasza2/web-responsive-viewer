@@ -64,7 +64,7 @@ export const tabsReducer = (state = initialState, action) => {
     }
     case DEVICE_UPDATE: {
       const nextTabs = cloneDeep(state)
-      const device = findDevice(nextTabs, { tabId: action.payload.tabId, deviceId: action.payload.deviceId })
+      const device = findDevice(nextTabs, { tabId: action.payload.tabId, deviceType: action.payload.deviceType })
       assign(device, action.payload.device)
       return nextTabs
     }

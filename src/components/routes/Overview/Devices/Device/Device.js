@@ -4,8 +4,16 @@ import WebView from 'components/WebView'
 
 import './Device.sass'
 
-const Device = ({ device, src }) => {
-  const onLoad = () => {}
+const Device = ({ device, tab, updateDevice, src }) => {
+  const onLoad = () => {
+    updateDevice({
+      deviceType: device.type,
+      tabId: tab.id,
+      device: {
+        loaded: true,
+      }
+    })
+  }
 
   return (
     <div className={`device device--${device.name}`}>

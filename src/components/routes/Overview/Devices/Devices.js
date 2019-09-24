@@ -3,7 +3,7 @@ import PanZoom from 'react-easy-panzoom'
 import Masonry from 'react-masonry-component'
 
 import useViewport from 'hooks/useViewport'
-import Device from './Device/Device';
+import Device from './Device'
 
 import './Devices.sass'
 
@@ -29,7 +29,7 @@ const Devices = ({ hidden, tab }) => {
         <Masonry style={{ width }}>
           {
             tab.devices.map(device => (
-              <Device key={device.type} device={device.type} src='https://github.com' />
+              <Device key={device.type} device={device.type} tab={tab} src='https://github.com' />
             ))
           }
         </Masonry>
