@@ -4,6 +4,7 @@ import Masonry from 'react-masonry-component'
 
 import useActiveTab from 'hooks/useActiveTab'
 import useViewport from 'hooks/useViewport'
+import WelcomeScreen from '../../WelcomeScreen'
 import Device from './Device'
 
 import './Devices.sass'
@@ -24,6 +25,11 @@ const Devices = ({ hidden, tab }) => {
     if (hidden) styles['display'] = 'none'
     return styles
   }, [hidden])
+
+  switch (activeTab.url) {
+    case 'welcome':
+      return <WelcomeScreen />
+  }
 
   return (
     <div className='devices' style={style}>
