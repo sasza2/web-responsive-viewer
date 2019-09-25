@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import LinearProgress from '@material-ui/core/LinearProgress'
+import get from 'lodash/get'
 
 import useActiveTab from 'hooks/useActiveTab'
 import Tabs from './Tabs'
@@ -16,7 +17,10 @@ const PROGRESS = {
 const MenuBar = () => {
   const activeTab = useActiveTab()
   const calculateProgress = useCallback(
-    () => Math.ceil(activeTab.devices.filter(device => device.loaded).length / activeTab.devices.length * 100),
+    () => {
+      if(!get(activeTab, 'devices.length')) return 100
+      return Math.ceil(activeTab.devices.filter(device => device.loaded).length / activeTab.devices.length * 100)
+    },
     [activeTab]
   )  
   const [progress, setProgress] = useState(calculateProgress())

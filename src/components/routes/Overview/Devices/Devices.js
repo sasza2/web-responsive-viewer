@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import PanZoom from 'react-easy-panzoom'
 import Masonry from 'react-masonry-component'
 
+import { PREDEFINED_PAGES } from 'consts'
 import useActiveTab from 'hooks/useActiveTab'
 import useViewport from 'hooks/useViewport'
 import WelcomeScreen from '../../WelcomeScreen'
@@ -26,12 +27,7 @@ const Devices = ({ hidden, tab }) => {
     return styles
   }, [hidden])
 
-  switch (activeTab.url) {
-    case 'welcome':
-      return <WelcomeScreen />
-  }
-
-  return (
+  const devices = () => (
     <div className='devices' style={style}>
       <PanZoom onStateChange={onZoomChange}>
         <Masonry style={{ width }}>
@@ -44,6 +40,13 @@ const Devices = ({ hidden, tab }) => {
       </PanZoom>
     </div>
   )
+
+  switch (activeTab.url) {
+    case PREDEFINED_PAGES.WELCOME:
+      return <WelcomeScreen />
+    default:
+      return devices()
+  }
 }
 
 export default Devices

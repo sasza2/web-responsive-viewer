@@ -1,7 +1,7 @@
 import assign from 'lodash/assign'
 import cloneDeep from 'lodash/cloneDeep'
 
-import { DEVICE_TYPES } from 'consts'
+import { DEVICE_TYPES, PREDEFINED_PAGES } from 'consts'
 
 export const TAB_ADD = 'TAB_ADD'
 export const TAB_UPDATE_ACTIVE = 'TAB_UPDATE_ACTIVE'
@@ -35,6 +35,12 @@ const initialState = {
     {
       id: TAB_LAST_ID,
       name: 'New cart', // TODO: add translation
+      devices: [],
+      url: PREDEFINED_PAGES.WELCOME,
+    },
+    {
+      id: ++TAB_LAST_ID,
+      name: 'github', // TODO: add translation
       devices: [
         {
           type: DEVICE_TYPES.IPHONE_3GS,
@@ -43,10 +49,10 @@ const initialState = {
           type: DEVICE_TYPES.IPHONE_4,
         }
       ],
-      url: 'welcome',
+      url: 'https://github.com',
     }
   ],
-  selected: TAB_LAST_ID,
+  selected: 0,
 }
 
 export const findActiveTab = (tabs) => tabs.list.find(tab => tab.id === tabs.selected)

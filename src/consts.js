@@ -15,3 +15,7 @@ export const DEVICE_TYPES = {
     height: 1280,
   }
 }
+
+export const PREDEFINED_PAGES = {
+  WELCOME: 'page:welcome',
+}
