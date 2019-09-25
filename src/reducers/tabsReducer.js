@@ -5,6 +5,7 @@ import { DEVICE_TYPES } from 'consts'
 
 export const TAB_ADD = 'TAB_ADD'
 export const TAB_UPDATE_ACTIVE = 'TAB_UPDATE_ACTIVE'
+export const TAB_UPDATE_URL = 'TAB_UPDATE_URL'
 export const DEVICE_UPDATE = 'DEVICE_UPDATE'
 
 let TAB_LAST_ID = 0
@@ -24,6 +25,11 @@ export const updateDevice = (payload) => ({
   payload,
 })
 
+export const updateUrlTab = (payload) => ({
+  type: TAB_UPDATE_URL,
+  payload,
+})
+
 const initialState = {
   list: [
     {
@@ -36,7 +42,8 @@ const initialState = {
         {
           type: DEVICE_TYPES.IPHONE_4,
         }
-      ]
+      ],
+      url: 'welcome',
     }
   ],
   selected: TAB_LAST_ID,
@@ -66,6 +73,16 @@ export const tabsReducer = (state = initialState, action) => {
       const nextTabs = cloneDeep(state)
       const device = findDevice(nextTabs, { tabId: action.payload.tabId, deviceName: action.payload.deviceName })
       assign(device, action.payload.device)
+      return nextTabs
+    }
+    case TAB_UPDATE_URL: {
+      const nextTabs = cloneDeep(state)
+      const tab = findActiveTab(nextTabs)
+      tab.devices = tab.devices.map(device => ({
+        ...device,
+        loaded: false,
+      }))
+      tab.url = action.payload.url
       return nextTabs
     }
     default:

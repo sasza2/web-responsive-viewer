@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import LinearProgress from '@material-ui/core/LinearProgress'
 
 import useActiveTab from 'hooks/useActiveTab'
@@ -32,7 +32,9 @@ const MenuBar = () => {
   }, [progress])
 
   useEffect(() =>{
-    setProgress(calculateProgress())
+    const nextProgress = calculateProgress()
+    setProgress(nextProgress)
+    if (nextProgress < 100) setVisibility(true)
   }, [activeTab])
 
   useEffect(() => {
