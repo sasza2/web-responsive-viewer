@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import LinearProgress from '@material-ui/core/LinearProgress'
 
 import useActiveTab from 'hooks/useActiveTab'
@@ -8,46 +8,48 @@ import Search from './Search'
 import './MenuBar.sass'
 
 const PROGRESS = {
-  MIN_VALUE: 5, // percent
   DISAPPEAR_AFTER: 500, // ms
+  MIN_FAKE_VALUE: 10, // percent
+  RAND_FAKE_VALUE: 10, // percent
 }
 
 const MenuBar = () => {
   const activeTab = useActiveTab()
-  const calculateProgress = () => ({
-    value: Math.max(
-      Math.ceil(activeTab.devices.filter(device => device.loaded).length / activeTab.devices.length * 100),
-      PROGRESS.MIN_VALUE
-    ),
-    visibility: true,
-  })
-
+  const calculateProgress = useCallback(
+    () => Math.ceil(activeTab.devices.filter(device => device.loaded).length / activeTab.devices.length * 100),
+    [activeTab]
+  )  
   const [progress, setProgress] = useState(calculateProgress())
+  const [visibility, setVisibility] = useState(true)
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      const fakeProgressValue = Math.floor(PROGRESS.MIN_FAKE_VALUE + Math.random() * PROGRESS.RAND_FAKE_VALUE)
+      if(fakeProgressValue > progress) setProgress(fakeProgressValue)
+    }, 200)
+
+    return () => clearTimeout(timer)
+  }, [progress])
+
+  useEffect(() =>{
     setProgress(calculateProgress())
   }, [activeTab])
 
-  useEffect(() =>{
-    if(progress.value < 100) return
+  useEffect(() => {
+    if (progress < 100) return
 
     const timer = setTimeout(() => {
-      setProgress({
-        value: 100,
-        visibility: false,
-      })
+      setVisibility(false)
     }, PROGRESS.DISAPPEAR_AFTER)
 
     return () => clearTimeout(timer)
-  }, [progress.value])
-
-  console.log(progress.value)
+  }, [progress])
   
   return (
     <div className='menu-bar'>
       <Tabs />
       <Search />
-      { progress.visibility && <LinearProgress variant="determinate" value={progress.value} /> }
+      { visibility && <LinearProgress variant="determinate" value={progress} /> }
     </div>
   )
 }
