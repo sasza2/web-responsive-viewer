@@ -7,6 +7,7 @@ export const TAB_ADD = 'TAB_ADD'
 export const TAB_ADD_EMPTY = 'TAB_ADD_EMPTY'
 export const TAB_UPDATE_ACTIVE = 'TAB_UPDATE_ACTIVE'
 export const TAB_UPDATE_URL = 'TAB_UPDATE_URL'
+export const TAB_SELECT = 'TAB_SELECT'
 export const DEVICE_UPDATE = 'DEVICE_UPDATE'
 
 let TAB_LAST_ID = 0
@@ -32,6 +33,11 @@ export const updateDevice = (payload) => ({
 
 export const updateUrlTab = (payload) => ({
   type: TAB_UPDATE_URL,
+  payload,
+})
+
+export const selectTab = (payload) => ({
+  type: TAB_SELECT,
   payload,
 })
 
@@ -93,6 +99,11 @@ export const tabsReducer = (state = initialState, action) => {
         loaded: false,
       }))
       tab.url = action.payload.url
+      return nextTabs
+    }
+    case TAB_SELECT: {
+      const nextTabs = cloneDeep(state)
+      nextTabs.selected = action.payload.selected
       return nextTabs
     }
     default:
