@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import './Tab.sass'
 
@@ -10,5 +11,16 @@ const Tab = ({ active, tab }) => (
     </div>
   </div>
 )
+
+Tab.propTypes = {
+  active: PropTypes.bool,
+  tab: PropTypes.shape({
+    name: PropTypes.string,
+  }).isRequired,
+}
+
+Tab.defaultProps = {
+  active: false,
+}
 
 export default Tab

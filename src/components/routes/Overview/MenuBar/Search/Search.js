@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
 import useActiveTab from 'hooks/useActiveTab'
 
@@ -23,6 +24,10 @@ const Search = ({ updateUrlTab }) => {
       </div>
     </div>
   )
+}
+
+Search.propTypes = {
+  updateUrlTab: PropTypes.func.isRequired,
 }
 
 export default Search

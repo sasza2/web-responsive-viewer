@@ -22,7 +22,7 @@ const MenuBar = () => {
       return Math.ceil(activeTab.devices.filter(device => device.loaded).length / activeTab.devices.length * 100)
     },
     [activeTab]
-  )  
+  )
   const [progress, setProgress] = useState(calculateProgress())
   const [visibility, setVisibility] = useState(true)
 
@@ -42,7 +42,7 @@ const MenuBar = () => {
   }, [activeTab])
 
   useEffect(() => {
-    if (progress < 100) return
+    if (progress < 100) return null
 
     const timer = setTimeout(() => {
       setVisibility(false)
@@ -50,7 +50,7 @@ const MenuBar = () => {
 
     return () => clearTimeout(timer)
   }, [progress])
-  
+
   return (
     <div className='menu-bar'>
       <Tabs />

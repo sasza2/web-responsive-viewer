@@ -32,7 +32,7 @@
     "webbuild": "react-scripts build",
     "test": "react-scripts test",
     "build": "webpack app/main.js",
-    "lint": "eslint src app",
+    "lint": "eslint src app --fix",
     "start": "concurrently \"BROWSER=none npm run webstart\" \"wait-on http://localhost:3000 && electron .\""
   },
   "eslintConfig": {

@@ -86,6 +86,6 @@ export const theme = {
       purple: '#5856D6',
       pink: '#FF2D55',
     },
-  };
-  
-  export default theme;
+  }
+
+  export default theme

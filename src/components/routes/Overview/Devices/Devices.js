@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react'
 import PanZoom from 'react-easy-panzoom'
 import Masonry from 'react-masonry-component'
 
@@ -18,12 +18,12 @@ const Devices = ({ hidden, tab }) => {
   useEffect(() => {
     setWidth(viewportWidth)
   }, [viewportWidth])
-  
+
   const onZoomChange = (panZoomState) => setWidth(viewportWidth / panZoomState.scale)
 
   const style = useMemo(() => {
     const styles = {}
-    if (hidden) styles['display'] = 'none'
+    if (hidden) styles.display = 'none'
     return styles
   }, [hidden])
 

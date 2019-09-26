@@ -15,9 +15,12 @@
     "react/sort-prop-types": 2,
     "import/imports-first": ["error", "absolute-first"],
     "import/newline-after-import": "error",
-    "import/no-unresolved": 0
+    "import/no-unresolved": 0,
+    "semi": [2, "never"],
+    "no-trailing-spaces": 2,
   },
   "globals": {
+    "document": true,
     "window": true
   },
   "parser": "babel-eslint"
