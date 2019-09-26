@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import Tab from './Tab'
 
@@ -11,5 +12,14 @@ const Tabs = ({ tabs }) => (
     }
   </div>
 )
+
+Tabs.propTypes = {
+  tabs: PropTypes.shape({
+    list: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    })),
+    selected: PropTypes.number.isRequired,
+  })
+}
 
 export default Tabs

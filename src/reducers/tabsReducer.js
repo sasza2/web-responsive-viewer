@@ -8,7 +8,7 @@ export const TAB_UPDATE_ACTIVE = 'TAB_UPDATE_ACTIVE'
 export const TAB_UPDATE_URL = 'TAB_UPDATE_URL'
 export const DEVICE_UPDATE = 'DEVICE_UPDATE'
 
-let TAB_LAST_ID = 0
+const TAB_LAST_ID = 0
 
 export const updateTabs = (payload) => ({
   type: TAB_ADD,
@@ -39,7 +39,7 @@ const initialState = {
       url: PREDEFINED_PAGES.WELCOME,
     },
     {
-      id: ++TAB_LAST_ID,
+      id: TAB_LAST_ID,
       name: 'github', // TODO: add translation
       devices: [
         {
@@ -61,7 +61,7 @@ const findTabById = (tabs, tabId) => tabs.list.find(tab => tab.id === tabId)
 
 const findDevice = (tabs, { tabId, deviceName }) => {
   const tab = findTabById(tabs, tabId)
-  const device = tab.devices.find(device => device.type.name === deviceName)
+  const device = tab.devices.find(item => item.type.name === deviceName)
   return device
 }
 
