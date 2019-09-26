@@ -39,7 +39,7 @@ const MenuBar = () => {
     const nextProgress = calculateProgress()
     setProgress(nextProgress)
     if (nextProgress < 100) setVisibility(true)
-  }, [activeTab])
+  }, [calculateProgress])
 
   useEffect(() => {
     if (progress < 100) return null

@@ -17,7 +17,7 @@
     "import/newline-after-import": "error",
     "import/no-unresolved": 0,
     "semi": [2, "never"],
-    "no-trailing-spaces": 2,
+    "no-trailing-spaces": 2
   },
   "globals": {
     "document": true,

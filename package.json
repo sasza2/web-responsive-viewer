@@ -36,9 +36,6 @@
     "lint": "eslint src app --fix",
     "start": "concurrently \"BROWSER=none npm run webstart\" \"wait-on http://localhost:3000 && electron .\""
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": {
     "production": [
       ">0.2%",
