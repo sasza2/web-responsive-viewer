@@ -11,7 +11,7 @@ const Search = ({ updateUrlTab }) => {
 
   useEffect(() => {
     setSearch(activeTab.url)
-  }, [activeTab.url])
+  }, [activeTab.id])
 
   const keyUp = (e) => {
     if (e.keyCode === 13) updateUrlTab({ url: e.target.value })
