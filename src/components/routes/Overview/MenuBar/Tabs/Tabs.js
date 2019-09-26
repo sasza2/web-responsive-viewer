@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Tab from './Tab'
+import Add from './Add'
 
 import './Tabs.sass'
 
@@ -10,6 +11,7 @@ const Tabs = ({ tabs }) => (
     {
       tabs.list.map(tab => <Tab key={tab.id} active={tabs.selected === tab.id} tab={tab} />)
     }
+    <Add />
   </div>
 )
 

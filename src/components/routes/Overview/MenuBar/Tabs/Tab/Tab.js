@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import './Tab.sass'
 
 const Tab = ({ active, tab }) => (
-  <div className={`tab ${active ? 'active' : ''}`}>
+  <div className={`tab ${active ? 'tab--active' : ''}`}>
     <div className='tab__in'>
       <span className='tab__name'>{tab.name}</span>
       <span className='close'>x</span>

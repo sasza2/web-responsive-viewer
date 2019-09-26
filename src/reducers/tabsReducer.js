@@ -1,14 +1,19 @@
 import assign from 'lodash/assign'
 import cloneDeep from 'lodash/cloneDeep'
 
-import { DEVICE_TYPES, PREDEFINED_PAGES } from 'consts'
+import { PREDEFINED_PAGES } from 'consts'
 
 export const TAB_ADD = 'TAB_ADD'
+export const TAB_ADD_EMPTY = 'TAB_ADD_EMPTY'
 export const TAB_UPDATE_ACTIVE = 'TAB_UPDATE_ACTIVE'
 export const TAB_UPDATE_URL = 'TAB_UPDATE_URL'
 export const DEVICE_UPDATE = 'DEVICE_UPDATE'
 
-const TAB_LAST_ID = 0
+let TAB_LAST_ID = 0
+
+export const addEmptyTab = () => ({
+  type: TAB_ADD_EMPTY,
+})
 
 export const updateTabs = (payload) => ({
   type: TAB_ADD,
@@ -38,19 +43,6 @@ const initialState = {
       devices: [],
       url: PREDEFINED_PAGES.WELCOME,
     },
-    {
-      id: TAB_LAST_ID,
-      name: 'github', // TODO: add translation
-      devices: [
-        {
-          type: DEVICE_TYPES.IPHONE_3GS,
-        },
-        {
-          type: DEVICE_TYPES.IPHONE_4,
-        }
-      ],
-      url: 'https://github.com',
-    }
   ],
   selected: 0,
 }
@@ -69,6 +61,18 @@ export const tabsReducer = (state = initialState, action) => {
   switch(action.type){
     case TAB_ADD:
       return action.payload
+    case TAB_ADD_EMPTY: {
+      const nextTabs = cloneDeep(state)
+      TAB_LAST_ID += 1
+      nextTabs.list.push({
+        id: TAB_LAST_ID,
+        name: 'New cart',
+        devices: [],
+        url: PREDEFINED_PAGES.WELCOME,
+      })
+      nextTabs.selected = TAB_LAST_ID
+      return nextTabs
+    }
     case TAB_UPDATE_ACTIVE: {
       const nextTabs = cloneDeep(state)
       const tab = findActiveTab(nextTabs)
