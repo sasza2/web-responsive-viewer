@@ -7,7 +7,7 @@ import './App.sass'
 
 const App = () => (
   <StylesProvider injectFirst>
-    <Overview />
+    <Overview />  
   </StylesProvider>
 )
 
