@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import useActiveTab from 'hooks/useActiveTab'
@@ -8,6 +8,10 @@ import './Search.sass'
 const Search = ({ updateUrlTab }) => {
   const activeTab = useActiveTab()
   const [search, setSearch] = useState(activeTab.url)
+
+  useEffect(() => {
+    setSearch(activeTab.url)
+  }, [activeTab.url])
 
   const keyUp = (e) => {
     if (e.keyCode === 13) updateUrlTab({ url: e.target.value })
@@ -27,6 +31,9 @@ const Search = ({ updateUrlTab }) => {
 }
 
 Search.propTypes = {
+  tabs: PropTypes.shape({
+    selected: PropTypes.number.isRequired,
+  }).isRequired,
   updateUrlTab: PropTypes.func.isRequired,
 }
 
