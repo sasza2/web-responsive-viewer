@@ -1,9 +1,10 @@
 import { connect } from 'react-redux'
 
-import { selectTab } from 'reducers/tabsReducer'
+import { removeTab, selectTab } from 'reducers/tabsReducer'
 import Tab from './Tab'
 
 const mapDispatchToProps = ({
+  removeTab,
   selectTab,
 })
 
