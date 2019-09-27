@@ -7,7 +7,7 @@ import './Device.sass'
 
 const Device = ({ device, src }) => {
   const onLoad = () => {
-    
+
   }
 
   return (
