@@ -10,7 +10,7 @@ import Device from './Device'
 
 import './Devices.sass'
 
-const Devices = ({ hidden, tab }) => {
+const Devices = ({ devices, hidden, tab }) => {
   const activeTab = useActiveTab()
   const { width: viewportWidth } = useViewport()
   const [width, setWidth] = useState(viewportWidth)
@@ -27,12 +27,12 @@ const Devices = ({ hidden, tab }) => {
     return styles
   }, [hidden])
 
-  const devices = () => (
+  const renderDevices = () => (
     <div className='devices' style={style}>
       <PanZoom onStateChange={onZoomChange}>
         <Masonry style={{ width }}>
           {
-            tab.devices.map(device => (
+            devices.map(device => (
               <Device key={device.type} device={device.type} tab={tab} src={activeTab.url} />
             ))
           }
@@ -45,7 +45,7 @@ const Devices = ({ hidden, tab }) => {
     case PREDEFINED_PAGES.WELCOME:
       return <WelcomeScreen />
     default:
-      return devices()
+      return renderDevices()
   }
 }
 
