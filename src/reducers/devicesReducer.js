@@ -5,7 +5,9 @@ export const checkDevices = (action, payload) => ({
   payload,
 })
 
-export const devicesReducer = (state = {}, action) => {
+const initialState = []
+
+export const devicesReducer = (state = initialState, action) => {
   switch(action.type){
     default:
       return state
