@@ -12,6 +12,7 @@ const Tabs = ({ tabs }) => (
       tabs.list.map(tab => <Tab key={tab.id} active={tabs.selected === tab.id} tab={tab} />)
     }
     <Add />
+    <span className='tabs__more'>...</span>
   </div>
 )
 

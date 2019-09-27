@@ -1,16 +1,16 @@
 export const DEVICE_TYPES = {
-  IPHONE_3GS: {
-    name: 'iphone-3gs',
+  DEVICE_1: {
+    name: 'device-1',
     width: 320,
     height: 480,
   },
-  IPHONE_4: {
-    name: 'iphone-4',
+  DEVICE_2: {
+    name: 'device-2',
     width: 480,
     height: 960,
   },
-  IPHONE_5: {
-    name: 'iphone-5',
+  DEVICE_3: {
+    name: 'device-3',
     width: 720,
     height: 1280,
   }

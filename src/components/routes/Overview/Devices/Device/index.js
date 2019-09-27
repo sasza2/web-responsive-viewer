@@ -1,1 +1,1 @@
-export { default } from './DeviceContainer'
+export { default } from './Device'

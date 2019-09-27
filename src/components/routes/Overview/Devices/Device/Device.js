@@ -5,15 +5,9 @@ import WebView from 'components/WebView'
 
 import './Device.sass'
 
-const Device = ({ device, tab, updateDevice, src }) => {
+const Device = ({ device, src }) => {
   const onLoad = () => {
-    updateDevice({
-      deviceName: device.name,
-      tabId: tab.id,
-      device: {
-        loaded: true,
-      }
-    })
+    
   }
 
   return (
@@ -30,10 +24,6 @@ Device.propTypes = {
     width: PropTypes.number.isRequired,
   }).isRequired,
   src: PropTypes.string.isRequired,
-  tab: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-  }).isRequired,
-  updateDevice: PropTypes.func.isRequired,
 }
 
 export default Device
