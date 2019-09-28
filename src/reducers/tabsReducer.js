@@ -2,6 +2,7 @@ import assign from 'lodash/assign'
 import cloneDeep from 'lodash/cloneDeep'
 
 import { PREDEFINED_PAGES, PREDEFINED_PAGES_LIST } from 'consts'
+import { DEVICES_UPDATE } from './devicesReducer'
 
 export const TAB_ADD = 'TAB_ADD'
 export const TAB_REMOVE = 'TAB_REMOVE'
@@ -118,6 +119,14 @@ export const tabsReducer = (state = initialState, action) => {
       const nextTabs = cloneDeep(state)
       const tab = findTabById(nextTabs, action.payload.tabId)
       tab.loaded += 1 // Increase loaded WebViews count
+      return nextTabs
+    }
+    case DEVICES_UPDATE: {
+      const nextTabs = cloneDeep(state)
+      nextTabs.list = nextTabs.list.map(tab => ({
+        ...tab,
+        loaded: 0,
+      }))
       return nextTabs
     }
     default:

@@ -7,13 +7,13 @@ import Checkbox from '@material-ui/core/Checkbox'
 import { DEVICE_TYPES } from 'consts'
 import { StyledFormLabel, StyledFormControlLabel } from './styles'
 
-const DevicesSelect = ({ devices }) => {
+const DevicesSelect = ({ devices, updateDevices }) => {
   const isChecked = useCallback(deviceName =>
-    devices.findIndex(device => device.name === deviceName),
+    devices.findIndex(device => device.name === deviceName) >= 0,
     [devices]
   )
 
-  const onChange = (device) => () => {} // eslint-disable-line
+  const onChange = (device) => () => updateDevices({ device })
 
   return (
     <FormControl component="fieldset">
@@ -44,6 +44,7 @@ DevicesSelect.propTypes = {
       width: PropTypes.number.isRequired,
     }).isRequired,
   ).isRequired,
+  updateDevices: PropTypes.func.isRequired,
 }
 
 export default DevicesSelect
