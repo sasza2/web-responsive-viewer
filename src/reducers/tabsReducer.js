@@ -57,11 +57,18 @@ const initialState = {
   list: [
     {
       id: TAB_LAST_ID,
-      name: 'New cart', // TODO: add translation
+      name: 'Welcome', // TODO: add translation
       url: PREDEFINED_PAGES.WELCOME,
       loaded: 0, // Loaded WebViews
       about: true,
     },
+    {
+      id: ++TAB_LAST_ID, // eslint-disable-line no-plusplus
+      name: 'Select devices',
+      url: PREDEFINED_PAGES.DEVICES,
+      loaded: 0,
+      about: true,
+    }
   ],
   selected: 0,
 }
@@ -81,7 +88,7 @@ export const tabsReducer = (state = initialState, action) => {
       TAB_LAST_ID += 1
       nextTabs.list.push({
         id: TAB_LAST_ID,
-        name: 'New cart',
+        name: 'Welcome', // TODO: translation
         loaded: 0,
         url: PREDEFINED_PAGES.WELCOME,
         about: true,
@@ -94,7 +101,7 @@ export const tabsReducer = (state = initialState, action) => {
       TAB_LAST_ID += 1
       nextTabs.list.push({
         id: TAB_LAST_ID,
-        name: 'New cart',
+        name: 'Select devices', // TODO: translation
         loaded: 0,
         url: PREDEFINED_PAGES.DEVICES,
         about: true,
