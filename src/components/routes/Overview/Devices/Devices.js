@@ -6,6 +6,7 @@ import { PREDEFINED_PAGES } from 'consts'
 import useActiveTab from 'hooks/useActiveTab'
 import useViewport from 'hooks/useViewport'
 import WelcomeScreen from '../../WelcomeScreen'
+import DevicesSelect from '../../DevicesSelect'
 import Device from './Device'
 
 import './Devices.sass'
@@ -44,6 +45,8 @@ const Devices = ({ devices, hidden, tab }) => {
   switch (activeTab.url) {
     case PREDEFINED_PAGES.WELCOME:
       return <WelcomeScreen />
+    case PREDEFINED_PAGES.DEVICES:
+      return <DevicesSelect />
     default:
       return renderDevices()
   }

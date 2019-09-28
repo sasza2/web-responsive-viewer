@@ -17,5 +17,5 @@ export const DEVICE_TYPES = {
 }
 
 export const PREDEFINED_PAGES = {
-  WELCOME: 'page:welcome',
+  WELCOME: 'about:welcome',
 }
