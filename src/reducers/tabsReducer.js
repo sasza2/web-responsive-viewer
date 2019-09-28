@@ -9,6 +9,7 @@ export const TAB_ADD_EMPTY = 'TAB_ADD_EMPTY'
 export const TAB_UPDATE_ACTIVE = 'TAB_UPDATE_ACTIVE'
 export const TAB_UPDATE_URL = 'TAB_UPDATE_URL'
 export const TAB_SELECT = 'TAB_SELECT'
+export const TAB_UPDATE_LOADER = 'TAB_UPDATE_LOADER'
 
 let TAB_LAST_ID = 0
 
@@ -41,12 +42,19 @@ export const selectTab = (payload) => ({
   payload,
 })
 
+export const updateTabLoader = (payload) => ({
+  type: TAB_UPDATE_LOADER,
+  payload,
+})
+
 const initialState = {
   list: [
     {
       id: TAB_LAST_ID,
       name: 'New cart', // TODO: add translation
       url: PREDEFINED_PAGES.WELCOME,
+      loaded: 0, // Loaded WebViews
+      about: true,
     },
   ],
   selected: 0,
@@ -55,6 +63,8 @@ const initialState = {
 export const findActiveTab = (tabs) => tabs.list.find(tab => tab.id === tabs.selected)
 
 const findTabIndexById = (tabs, tabId) => tabs.list.findIndex(tab => tab.id === tabId)
+
+const findTabById = (tabs, tabId) => tabs.list.find(tab => tab.id === tabId)
 
 export const tabsReducer = (state = initialState, action) => {
   switch(action.type){
@@ -66,8 +76,9 @@ export const tabsReducer = (state = initialState, action) => {
       nextTabs.list.push({
         id: TAB_LAST_ID,
         name: 'New cart',
-        devices: [],
+        loaded: 0,
         url: PREDEFINED_PAGES.WELCOME,
+        about: true,
       })
       nextTabs.selected = TAB_LAST_ID
       return nextTabs
@@ -82,6 +93,8 @@ export const tabsReducer = (state = initialState, action) => {
       const nextTabs = cloneDeep(state)
       const tab = findActiveTab(nextTabs)
       tab.url = action.payload.url
+      tab.about = false
+      tab.loaded = 0 // Loaded WebViews
       return nextTabs
     }
     case TAB_SELECT: {
@@ -99,6 +112,12 @@ export const tabsReducer = (state = initialState, action) => {
       nextTabs.list.splice(tabIndex, 1)
       // If removed tab is current tab
       if (tab.id === nextTabs.selected) nextTabs.selected = nextTabs.list[0].id
+      return nextTabs
+    }
+    case TAB_UPDATE_LOADER: {
+      const nextTabs = cloneDeep(state)
+      const tab = findTabById(nextTabs, action.payload.tabId)
+      tab.loaded += 1 // Increase loaded WebViews count
       return nextTabs
     }
     default:

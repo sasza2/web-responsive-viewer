@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 
 import WebView from 'components/WebView'
 
 import './Device.sass'
 
-const Device = ({ device, src }) => {
-  const onLoad = () => {
+const Device = ({ device, src, tab, updateTabLoader }) => {
+  const hasLoadedRef = useRef()
 
+  const onLoad = () => {
+    if (hasLoadedRef.current) return
+    hasLoadedRef.current = true
+    updateTabLoader({
+      tabId: tab.id,
+    })
   }
 
   return (
@@ -24,6 +30,10 @@ Device.propTypes = {
     width: PropTypes.number.isRequired,
   }).isRequired,
   src: PropTypes.string.isRequired,
+  tab: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+  }),
+  updateTabLoader: PropTypes.func.isRequired,
 }
 
 export default Device
