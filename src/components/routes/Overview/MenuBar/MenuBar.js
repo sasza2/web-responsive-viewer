@@ -22,7 +22,11 @@ const MenuBar = ({ devices }) => {
 }
 
 MenuBar.propTypes = {
-  devices: PropTypes.arrayOf().isRequired,
+  devices: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
 }
 
 export default MenuBar

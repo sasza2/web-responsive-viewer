@@ -31,9 +31,6 @@ const Search = ({ updateUrlTab }) => {
 }
 
 Search.propTypes = {
-  tabs: PropTypes.shape({
-    selected: PropTypes.number.isRequired,
-  }).isRequired,
   updateUrlTab: PropTypes.func.isRequired,
 }
 
