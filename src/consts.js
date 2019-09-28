@@ -18,4 +18,7 @@ export const DEVICE_TYPES = {
 
 export const PREDEFINED_PAGES = {
   WELCOME: 'about:welcome',
+  DEVICES: 'about:devices',
 }
+
+export const PREDEFINED_PAGES_LIST = Object.values(PREDEFINED_PAGES)

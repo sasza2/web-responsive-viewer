@@ -1,7 +1,7 @@
 import assign from 'lodash/assign'
 import cloneDeep from 'lodash/cloneDeep'
 
-import { PREDEFINED_PAGES } from 'consts'
+import { PREDEFINED_PAGES, PREDEFINED_PAGES_LIST } from 'consts'
 
 export const TAB_ADD = 'TAB_ADD'
 export const TAB_REMOVE = 'TAB_REMOVE'
@@ -93,7 +93,7 @@ export const tabsReducer = (state = initialState, action) => {
       const nextTabs = cloneDeep(state)
       const tab = findActiveTab(nextTabs)
       tab.url = action.payload.url
-      tab.about = false
+      tab.about = PREDEFINED_PAGES_LIST.includes(tab.url)
       tab.loaded = 0 // Loaded WebViews
       return nextTabs
     }
