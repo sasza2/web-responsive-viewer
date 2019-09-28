@@ -6,7 +6,7 @@ const WebView = ({ height, onLoad, src, width }) => {
   const webviewRef = useRef()
 
   useLayoutEffect(() => {
-    if (loading) return null
+    if (loading) return
 
     webviewRef.current.addEventListener('did-stop-loading', onLoad)
     return () => webviewRef.current.removeEventListener('did-stop-loading', onLoad)

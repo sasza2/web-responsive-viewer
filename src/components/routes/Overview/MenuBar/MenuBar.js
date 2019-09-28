@@ -42,7 +42,7 @@ const MenuBar = () => {
   }, [calculateProgress])
 
   useEffect(() => {
-    if (progress < 100) return null
+    if (progress < 100) return
 
     const timer = setTimeout(() => {
       setVisibility(false)

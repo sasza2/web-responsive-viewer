@@ -1,3 +1,5 @@
+import { DEVICE_TYPES } from 'consts'
+
 export const DEVICES_CHECK = 'DEVICES_CHECK'
 
 export const checkDevices = (action, payload) => ({
@@ -5,7 +7,10 @@ export const checkDevices = (action, payload) => ({
   payload,
 })
 
-const initialState = []
+const initialState = [
+  DEVICE_TYPES.DEVICE_1,
+  DEVICE_TYPES.DEVICE_2,
+]
 
 export const devicesReducer = (state = initialState, action) => {
   switch(action.type){

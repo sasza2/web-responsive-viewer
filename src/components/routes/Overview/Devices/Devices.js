@@ -33,7 +33,7 @@ const Devices = ({ devices, hidden, tab }) => {
         <Masonry style={{ width }}>
           {
             devices.map(device => (
-              <Device key={device.type} device={device.type} tab={tab} src={activeTab.url} />
+              <Device key={device.name} device={device} tab={tab} src={activeTab.url} />
             ))
           }
         </Masonry>
