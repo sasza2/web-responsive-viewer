@@ -1,1 +1,1 @@
-export { default } from './DevicesSelect'
+export { default } from './DevicesSelectContainer'
