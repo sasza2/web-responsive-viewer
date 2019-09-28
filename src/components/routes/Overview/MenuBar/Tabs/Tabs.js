@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import Tab from './Tab'
 import Add from './Add'
+import OpenDevices from './OpenDevices'
 
 import './Tabs.sass'
 
@@ -12,7 +13,7 @@ const Tabs = ({ tabs }) => (
       tabs.list.map(tab => <Tab key={tab.id} active={tabs.selected === tab.id} tab={tab} />)
     }
     <Add />
-    <span className='tabs__more'>...</span>
+    <OpenDevices />
   </div>
 )
 

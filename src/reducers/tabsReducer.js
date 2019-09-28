@@ -11,6 +11,7 @@ export const TAB_UPDATE_ACTIVE = 'TAB_UPDATE_ACTIVE'
 export const TAB_UPDATE_URL = 'TAB_UPDATE_URL'
 export const TAB_SELECT = 'TAB_SELECT'
 export const TAB_UPDATE_LOADER = 'TAB_UPDATE_LOADER'
+export const TAB_OPEN_DEVICES = 'TAB_OPEN_DEVICES'
 
 let TAB_LAST_ID = 0
 
@@ -48,6 +49,10 @@ export const updateTabLoader = (payload) => ({
   payload,
 })
 
+export const openDevices = () => ({
+  type: TAB_OPEN_DEVICES,
+})
+
 const initialState = {
   list: [
     {
@@ -79,6 +84,19 @@ export const tabsReducer = (state = initialState, action) => {
         name: 'New cart',
         loaded: 0,
         url: PREDEFINED_PAGES.WELCOME,
+        about: true,
+      })
+      nextTabs.selected = TAB_LAST_ID
+      return nextTabs
+    }
+    case TAB_OPEN_DEVICES: {
+      const nextTabs = cloneDeep(state)
+      TAB_LAST_ID += 1
+      nextTabs.list.push({
+        id: TAB_LAST_ID,
+        name: 'New cart',
+        loaded: 0,
+        url: PREDEFINED_PAGES.DEVICES,
         about: true,
       })
       nextTabs.selected = TAB_LAST_ID
