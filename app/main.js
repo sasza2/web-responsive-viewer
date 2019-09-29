@@ -6,6 +6,9 @@ const {app} = electron
 const {BrowserWindow} = electron
 const {webContents} = electron
 
+const Store = require('electron-store');
+const store = new Store();
+
 let mainWindow
 
 function createWindow() {

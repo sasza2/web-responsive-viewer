@@ -18,7 +18,7 @@ export const Header = styled.h1`
   color: white;
 `
 
-export const Form = styled.div`
+export const Form = styled.form`
   display: block;
   clear: both;
   margin-top: 35px;
