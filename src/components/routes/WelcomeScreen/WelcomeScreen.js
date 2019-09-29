@@ -1,37 +1,29 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import FormControl from '@material-ui/core/FormControl';
-import { history } from 'react-router-dom'
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import FormControl from '@material-ui/core/FormControl'
+
 import { Welcome, Header, Form, StyledInput, StyledInputLabel, StyledButton} from './styles'
 
-const WelcomeScreen = () => {
-  const [values, setValues] = React.useState({
-    url: '',
-  });
-
-  const handleChange = name => event => {
-    setValues({ ...values, [name]: event.target.value });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  }
-
+const FirstRunHomeScreen = ({ updateUrlTab }) => {
+  const [search, setSearch] = useState('')
   return (
-  <Welcome>
-    <Header>
-      Web responsive viewer
-      <Form onSubmit={handleSubmit}>
-        <FormControl>
-          <StyledInputLabel htmlFor="my-input">Website adress</StyledInputLabel>
-          <StyledInput id="my-input" onChange={handleChange('url')} aria-describedby="my-helper-text"/>
-        </FormControl>
-        <StyledButton type="submit" disabled={!values.url}>Start testing</StyledButton>
-      </Form>
-    </Header>
-  </Welcome>
+    <Welcome>
+      <Header>
+        Web responsive viewer
+        <Form>
+          <FormControl>
+            <StyledInputLabel htmlFor="my-input">Website adress</StyledInputLabel>
+            <StyledInput onChange={(e) => setSearch(e.target.value)} id="my-input" aria-describedby="my-helper-text" />
+          </FormControl>
+          <StyledButton onClick={() => updateUrlTab({ url: search })}>Start testing</StyledButton>
+        </Form>
+      </Header>
+    </Welcome>
   )
 }
 
+FirstRunHomeScreen.propTypes = {
+  updateUrlTab: PropTypes.func.isRequired,
+}
 
-export default WelcomeScreen
+export default FirstRunHomeScreen

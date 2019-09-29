@@ -2,8 +2,8 @@ import path from 'path'
 import isDev from 'electron-is-dev'
 import electron from 'electron'
 
-const app = electron.app
-const BrowserWindow = electron.BrowserWindow
+const {app} = electron
+const {BrowserWindow} = electron
 
 const Store = require('electron-store');
 const store = new Store();
@@ -14,15 +14,14 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     show: false,
     webPreferences: {
-      webSecurity: false, 
+      webSecurity: false,
       webviewTag: true
     },
     toolbar: false,
   })
   mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`)
   mainWindow.setMenuBarVisibility(false)
-  // mainWindow.webContents.openDevTools()
-  mainWindow.on('closed', () => mainWindow = null)
+  mainWindow.webContents.openDevTools()
   mainWindow.maximize()
   mainWindow.show()
 }

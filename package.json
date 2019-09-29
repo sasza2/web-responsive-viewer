@@ -5,21 +5,23 @@
   "dependencies": {
     "@material-ui/core": "^4.4.3",
     "@material-ui/icons": "^4.4.3",
+    "@material-ui/styles": "^4.4.3",
     "add": "^2.0.6",
     "concurrently": "^4.1.2",
     "electron": "^6.0.10",
     "electron-builder": "^21.2.0",
     "electron-is-dev": "^1.1.0",
-    "electron-json-storage": "^4.1.8",
-    "electron-store": "^5.0.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-prettier": "^3.1.1",
     "lodash": "^4.17.15",
     "node-sass": "^4.12.0",
+    "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-easy-panzoom": "^0.4.3",
     "react-masonry-component": "^6.2.1",
     "react-redux": "^7.1.1",
-    "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.2",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
@@ -31,10 +33,13 @@
     "webbuild": "react-scripts build",
     "test": "react-scripts test",
     "build": "webpack app/main.js",
+    "lint": "eslint src app --fix",
     "start": "concurrently \"BROWSER=none npm run webstart\" \"wait-on http://localhost:3000 && electron .\""
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   },
   "browserslist": {
     "production": [
@@ -50,7 +55,17 @@
   },
   "main": "dist/main.js",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.3.1",
+    "@typescript-eslint/parser": "^2.3.1",
+    "babel-eslint": "^10.0.3",
     "eslint": "^6.4.0",
+    "eslint-config-react-app": "^5.0.2",
+    "eslint-plugin-flowtype": "^3.13.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "husky": "^3.0.5",
     "webpack-cli": "^3.3.9"
   }
 }

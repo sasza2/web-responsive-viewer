@@ -1,13 +1,17 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
+import useActiveTab from 'hooks/useActiveTab'
 import MenuBar from './MenuBar'
 import Devices from './Devices'
 
-const Overview = () => (
-  <Fragment>
-    <MenuBar />
-    <Devices />
-  </Fragment>
-)
+const Overview = () => {
+  const activeTab = useActiveTab()
+  return (
+    <>
+      <MenuBar />
+      <Devices tab={activeTab} />
+    </>
+  )
+}
 
 export default Overview

@@ -1,8 +1,7 @@
-import React from 'react'
-import Button from '@material-ui/core/Button';
 import styled from 'styled-components'
-import Input from '@material-ui/core/Input';
-import { InputLabel } from '@material-ui/core';
+import Button from '@material-ui/core/Button'
+import Input from '@material-ui/core/Input'
+import { InputLabel } from '@material-ui/core'
 
 export const Welcome = styled.div`
   width: 500px;
@@ -56,4 +55,4 @@ export const StyledButton = styled(Button)`
   height: 48px;
   padding: 0 30px;
   box-shadow: 0 3px 5px 2px rgba(255, 105, 135, .3);
-`;
+`
