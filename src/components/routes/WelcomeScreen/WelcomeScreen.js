@@ -1,27 +1,37 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
-
+import { history } from 'react-router-dom'
 import { Welcome, Header, Form, StyledInput, StyledInputLabel, StyledButton} from './styles'
 
-const FirstRunHomeScreen = () => (
+const WelcomeScreen = () => {
+  const [values, setValues] = React.useState({
+    url: '',
+  });
+
+  const handleChange = name => event => {
+    setValues({ ...values, [name]: event.target.value });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  }
+
+  return (
   <Welcome>
     <Header>
       Web responsive viewer
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <FormControl>
           <StyledInputLabel htmlFor="my-input">Website adress</StyledInputLabel>
-          <StyledInput id="my-input" aria-describedby="my-helper-text" />
+          <StyledInput id="my-input" onChange={handleChange('url')} aria-describedby="my-helper-text"/>
         </FormControl>
-        <Link to='/overview'>
-          <StyledButton>Start testing</StyledButton>
-        </Link>
+        <StyledButton type="submit" disabled={!values.url}>Start testing</StyledButton>
       </Form>
     </Header>
   </Welcome>
-)
+  )
+}
 
 
-export default FirstRunHomeScreen
+export default WelcomeScreen

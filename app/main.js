@@ -5,6 +5,9 @@ import electron from 'electron'
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
 
+const Store = require('electron-store');
+const store = new Store();
+
 let mainWindow
 
 function createWindow() {
