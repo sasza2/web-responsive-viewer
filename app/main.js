@@ -4,6 +4,7 @@ import electron from 'electron'
 
 const {app} = electron
 const {BrowserWindow} = electron
+const {webContents} = electron
 
 let mainWindow
 
@@ -21,6 +22,18 @@ function createWindow() {
   mainWindow.webContents.openDevTools()
   mainWindow.maximize()
   mainWindow.show()
+}
+
+const infoToWebview = (payload) => {
+  const webContentInstances = webContents.getAllWebContents()
+
+  webContentInstances.forEach(webContent => {
+    webContent.send('action', payload)
+  })
+}
+
+global.receiveMessage = (payload) => {
+  infoToWebview(payload)
 }
 
 app.on('ready', createWindow)

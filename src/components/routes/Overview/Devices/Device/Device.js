@@ -8,12 +8,13 @@ import './Device.sass'
 const Device = ({ device, src, tab, updateTabLoader }) => {
   const hasLoadedRef = useRef()
 
-  const onLoad = () => {
+  const onLoad = ({ webviewRef }) => {
     if (hasLoadedRef.current) return
     hasLoadedRef.current = true
     updateTabLoader({
       tabId: tab.id,
     })
+    webviewRef.executeJavaScript(`window.webDeviceId = '${tab.id}-${device.name}';`)
   }
 
   return (

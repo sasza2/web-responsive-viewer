@@ -34,7 +34,7 @@
     "test": "react-scripts test",
     "build": "webpack app/main.js",
     "lint": "eslint src app --fix",
-    "start": "concurrently \"BROWSER=none npm run webstart\" \"wait-on http://localhost:3000 && electron .\""
+    "start": "concurrently \"BROWSER=none npm run webstart\" \"ELECTRON_ENABLE_LOGGING=1\" \"wait-on http://localhost:3000 && electron .\""
   },
   "husky": {
     "hooks": {

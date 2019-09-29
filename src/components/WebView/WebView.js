@@ -5,11 +5,16 @@ const WebView = ({ height, onLoad, src, width }) => {
   const [loading, setLoading] = useState(true)
   const webviewRef = useRef()
 
+  const onLoadWrapper = () => {
+    onLoad({ webviewRef: webviewRef.current })
+    webviewRef.current.removeEventListener('dom-ready', onLoadWrapper)
+  }
+
   useLayoutEffect(() => {
     if (loading) return
 
-    webviewRef.current.addEventListener('did-stop-loading', onLoad)
-    return () => webviewRef.current.removeEventListener('did-stop-loading', onLoad)
+    webviewRef.current.addEventListener('dom-ready', onLoadWrapper)
+    return () => webviewRef.current.removeEventListener('dom-ready', onLoadWrapper)
   }, [loading, onLoad])
 
   const onMount = (node) => {
@@ -24,6 +29,7 @@ const WebView = ({ height, onLoad, src, width }) => {
       ref={onMount}
       style={{ width, height }}
       dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
+        // TODO: preload="file:///home/sasza/Dokumenty/Projekty/web-responsive-viewer/app/preload.js"
         __html: `<webview style="width: 100%; height: 100%;" src="${src}" disablewebsecurity></webview>`
       }}
     />
