@@ -13,6 +13,11 @@ export const DEVICE_TYPES = {
     name: 'device-3',
     width: 720,
     height: 1280,
+  },
+  DEVICE_4: {
+    name: 'device-4',
+    width: 360,
+    height: 640,
   }
 }
 
