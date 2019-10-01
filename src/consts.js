@@ -1,24 +1,37 @@
 export const DEVICE_TYPES = {
   DEVICE_1: {
-    name: 'device-1',
+    name: 'iPhone 5/SE',
     width: 320,
-    height: 480,
+    height: 568,
+    mockupUrl: '/img/iphone5s.png',
+    frameSizes: {
+      top: 115,
+      leftRight: 30,
+      bottom: 108,
+    }
   },
   DEVICE_2: {
-    name: 'device-2',
-    width: 480,
-    height: 960,
+    name: 'iPhone 6/7/8',
+    width: 375,
+    height: 667,
+    mockupUrl: '/img/iphone7.png',
+    frameSizes: {
+      top: 152,
+      leftRight: 62,
+      bottom: 153,
+    }
   },
   DEVICE_3: {
-    name: 'device-3',
-    width: 720,
-    height: 1280,
+    name: 'iPhone 6/7/8 Plus',
+    width: 414,
+    height: 736,
+    mockupUrl: '/img/iphone7Plus.png',
+    frameSizes: {
+      top: 207,
+      leftRight: 105,
+      bottom: 135,
+    }
   },
-  DEVICE_4: {
-    name: 'device-4',
-    width: 360,
-    height: 640,
-  }
 }
 
 export const PREDEFINED_PAGES = {

@@ -18,7 +18,15 @@ const Device = ({ device, src, tab, updateTabLoader }) => {
   }
 
   return (
-    <div className={`device device--${device.name}`}>
+    <div className={`device device--${device.name}`}
+     style={{
+        backgroundImage: `url(${device.mockupUrl})`,
+        paddingTop: device.frameSizes.top,
+        paddingRight: device.frameSizes.leftRight,
+        paddingBottom: device.frameSizes.bottom,
+        paddingLeft: device.frameSizes.leftRight,
+        }
+      }>
       <WebView src={src} width={device.width} height={device.height} onLoad={onLoad} />
     </div>
   )
@@ -26,7 +34,9 @@ const Device = ({ device, src, tab, updateTabLoader }) => {
 
 Device.propTypes = {
   device: PropTypes.shape({
+    frameSizes: PropTypes.object.isRequired,
     height: PropTypes.number.isRequired,
+    mockupUrl: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     width: PropTypes.number.isRequired,
   }).isRequired,
