@@ -12,7 +12,7 @@ import Device from './Device'
 
 import './Devices.sass'
 
-const Devices = ({ devices, tab }) => {
+const Devices = ({ configuration, devices, tab }) => {
   const activeTab = useActiveTab()
   const { width: viewportWidth } = useViewport()
   const [width, setWidth] = useState(viewportWidth)
@@ -23,17 +23,28 @@ const Devices = ({ devices, tab }) => {
 
   const onZoomChange = (panZoomState) => setWidth(viewportWidth / panZoomState.scale)
 
+  const withPanZoom = (node) => {
+    if (!configuration.zoom) return node
+    return (
+      <PanZoom onStateChange={onZoomChange}>
+        {node}
+      </PanZoom>
+    )
+  }
+
   const renderDevices = () => (
     <div className='devices'>
-      <PanZoom onStateChange={onZoomChange}>
-        <Masonry style={{ width }}>
-          {
-            devices.map(device => (
-              <Device key={device.name} device={device} tab={tab} src={activeTab.url} />
-            ))
-          }
-        </Masonry>
-      </PanZoom>
+      {
+        withPanZoom(
+          <Masonry style={{ width }}>
+            {
+              devices.map(device => (
+                <Device key={device.name} device={device} tab={tab} src={activeTab.url} />
+              ))
+            }
+          </Masonry>
+        )
+      }
     </div>
   )
 
@@ -48,12 +59,15 @@ const Devices = ({ devices, tab }) => {
 }
 
 Devices.propTypes = {
+  configuration: PropTypes.shape({
+    zoom: PropTypes.bool.isRequired,
+  }),
   devices: PropTypes.arrayOf(
-    PropTypes.shapeOf({
+    PropTypes.shape({
       name: PropTypes.string.isRequired,
     }).isRequired,
   ).isRequired,
-  tab: PropTypes.shapeOf({
+  tab: PropTypes.shape({
     url: PropTypes.string.isRequired,
   }),
 }
