@@ -7,7 +7,7 @@ import { PREDEFINED_PAGES } from 'consts'
 import useActiveTab from 'hooks/useActiveTab'
 import useViewport from 'hooks/useViewport'
 import WelcomeScreen from '../../WelcomeScreen'
-import DevicesSelect from '../../DevicesSelect'
+import Configuration from '../../Configuration'
 import Device from './Device'
 
 import './Devices.sass'
@@ -52,7 +52,7 @@ const Devices = ({ configuration, devices, tab }) => {
     case PREDEFINED_PAGES.WELCOME:
       return <WelcomeScreen />
     case PREDEFINED_PAGES.DEVICES:
-      return <DevicesSelect />
+      return <Configuration />
     default:
       return renderDevices()
   }

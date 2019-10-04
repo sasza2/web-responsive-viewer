@@ -7,7 +7,7 @@ import Checkbox from '@material-ui/core/Checkbox'
 import { DEVICE_TYPES } from 'consts'
 import { StyledFormLabel, StyledFormControlLabel } from './styles'
 
-const DevicesSelect = ({ devices, updateDevices }) => {
+const Configuration = ({ devices, updateDevices }) => {
   const isChecked = useCallback(deviceName =>
     devices.findIndex(device => device.name === deviceName) >= 0,
     [devices]
@@ -36,7 +36,7 @@ const DevicesSelect = ({ devices, updateDevices }) => {
   )
 }
 
-DevicesSelect.propTypes = {
+Configuration.propTypes = {
   devices: PropTypes.arrayOf(
     PropTypes.shape({
       height: PropTypes.number.isRequired,
@@ -47,4 +47,4 @@ DevicesSelect.propTypes = {
   updateDevices: PropTypes.func.isRequired,
 }
 
-export default DevicesSelect
+export default Configuration
