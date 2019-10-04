@@ -26,7 +26,7 @@ const Devices = ({ configuration, devices, tab }) => {
   const withPanZoom = (node) => {
     if (!configuration.zoom) return node
     return (
-      <PanZoom onStateChange={onZoomChange}>
+      <PanZoom autoCenter onStateChange={onZoomChange}>
         {node}
       </PanZoom>
     )
