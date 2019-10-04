@@ -3,7 +3,7 @@ import cloneDeep from 'lodash/cloneDeep'
 const UPDATE_CONFIGURATION = false
 
 const initialState = {
-  devTools: true,
+  zoom: true,
 }
 
 export const updateConfiguration = (payload) => ({

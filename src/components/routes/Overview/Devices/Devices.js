@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import PanZoom from 'react-easy-panzoom'
 import Masonry from 'react-masonry-component'
 
@@ -44,6 +45,17 @@ const Devices = ({ devices, tab }) => {
     default:
       return renderDevices()
   }
+}
+
+Devices.propTypes = {
+  devices: PropTypes.arrayOf(
+    PropTypes.shapeOf({
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
+  tab: PropTypes.shapeOf({
+    url: PropTypes.string.isRequired,
+  }),
 }
 
 export default Devices
