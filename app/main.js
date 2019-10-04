@@ -8,7 +8,7 @@ const {webContents} = electron
 
 const Store = require('electron-store')
 
-const store = new Store()
+const store = new Store() // eslint-disable-line no-unused-vars
 
 let mainWindow
 

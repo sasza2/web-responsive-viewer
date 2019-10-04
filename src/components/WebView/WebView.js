@@ -30,7 +30,7 @@ const WebView = ({ height, onLoad, src, width }) => {
       style={{ width, height }}
       dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
         // TODO: preload="file:///home/sasza/Dokumenty/Projekty/web-responsive-viewer/app/preload.js"
-        __html: `<webview style="width: 100%; height: 100%;" src="${src}" disablewebsecurity></webview>`
+        __html: `<webview preload="file:///home/sasza/Dokumenty/Projekty/web-responsive-viewer/app/preload.js" style="width: 100%; height: 100%;" src="${src}" disablewebsecurity></webview>`
       }}
     />
   )

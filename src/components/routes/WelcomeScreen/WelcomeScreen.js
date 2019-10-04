@@ -6,16 +6,21 @@ import { Welcome, Header, Form, StyledInput, StyledInputLabel, StyledButton} fro
 
 const FirstRunHomeScreen = ({ updateUrlTab }) => {
   const [search, setSearch] = useState('')
+
+  const onSubmit = () => {
+    updateUrlTab({ url: search })
+  }
+
   return (
     <Welcome>
       <Header>
         Web responsive viewer
-        <Form>
+        <Form onSubmit={onSubmit}>
           <FormControl>
             <StyledInputLabel htmlFor="my-input">Website adress</StyledInputLabel>
             <StyledInput onChange={(e) => setSearch(e.target.value)} id="my-input" aria-describedby="my-helper-text" />
           </FormControl>
-          <StyledButton onClick={() => updateUrlTab({ url: search })}>Start testing</StyledButton>
+          <StyledButton onClick={onSubmit}>Start testing</StyledButton>
         </Form>
       </Header>
     </Welcome>
