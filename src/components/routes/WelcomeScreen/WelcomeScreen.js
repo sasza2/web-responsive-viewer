@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import FormControl from '@material-ui/core/FormControl'
+import File from 'helpers/File'
 
 import { Welcome, Header, Form, StyledInput, StyledInputLabel, StyledButton} from './styles'
 
@@ -9,6 +10,7 @@ const FirstRunHomeScreen = ({ updateUrlTab }) => {
 
   const onSubmit = () => {
     updateUrlTab({ url: search })
+    File.write('url', search)
   }
 
   return (

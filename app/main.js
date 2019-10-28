@@ -16,6 +16,7 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     show: false,
     webPreferences: {
+      nodeIntegration: true,
       webSecurity: false,
       webviewTag: true
     },
