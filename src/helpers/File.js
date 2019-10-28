@@ -1,11 +1,11 @@
 const fs = require('fs')
 
-const absolutePath = (relativePath) => `${process.env.REACT_APP_PATH}/store/${relativePath}`
+const absolutePath = (name) => `${process.env.REACT_APP_PATH}/store/${name}`
 
-const read = (relativePath) => fs.readFileSync(absolutePath(relativePath), 'utf8')
+const read = (name) => fs.readFileSync(absolutePath(name), 'utf8')
 
-const write = (relativePath, content) => {
-  fs.writeFileSync(absolutePath(relativePath), content)
+const write = (name, content) => {
+  fs.writeFileSync(absolutePath(name), content)
 }
 
 const File = {
