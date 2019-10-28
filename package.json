@@ -30,7 +30,7 @@
     "wait-on": "^3.3.0"
   },
   "scripts": {
-    "webstart": "react-scripts start",
+    "webstart": "REACT_APP_PATH=$(pwd) react-scripts start",
     "webbuild": "react-scripts build",
     "test": "react-scripts test",
     "build": "webpack app/main.js",
