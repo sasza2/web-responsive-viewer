@@ -12,7 +12,6 @@ export const Welcome = styled.div`
 `
 
 export const Header = styled.h1`
-  font-family: "Muli";
   text-align: center;
   font-size: 62px;
   color: white;

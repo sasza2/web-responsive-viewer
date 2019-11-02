@@ -10,7 +10,7 @@ const FirstRunHomeScreen = ({ updateUrlTab }) => {
 
   const onSubmit = () => {
     updateUrlTab({ url: search })
-    File.write('url', search)
+    File.write('settings.json', search)
   }
 
   return (
